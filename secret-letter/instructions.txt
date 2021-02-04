@@ -1,0 +1,16 @@
+You and your friend want to be able to send encrypted letters to eachother, but decrypting these letters by hand is a tedius task so you want to make a program to make your life easier.
+
+Two different versions of "HELLO FRIEND" encrypted can look like this:
+1. CJGNNQ HTKGPF
+2. QXUBBE VHYUDT
+
+The decryption works by shifting characters in the alphabet, and the first character in the letter tells you which character should be the first in your encrypted alphabet. You and your friend will also only ever encrypt uppercase letters in the messages.
+
+For instance, the first encrypted hello would be solved like this by hand:
+
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+Q R S T U V W X Y Z A B C D E F G H I J K L M N O P 
+| | | | | | | | | | | | | | | | | | | | | | | | | |
+C D E F G H I J K L M N O P Q R S T U V W X Y Z A B
+
+We start the alphabet at C, then we can see that J is translated to H, G is translated to E and so on...

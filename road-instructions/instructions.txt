@@ -1,0 +1,34 @@
+You have been given instructions on how to drive to get to your friend from his/her old house to their new place.
+The only problem is that the driving instructions you got are a bit confusing and you would rather look at your map the next time. Your map does not use street addresses but relies on a coordinate system that is described using number of blocks in the directions of east and north.
+
+So examples of blocks around your friends old house in every direction is as follows:
+( 1,  0) - East side
+(-1,  0) - West side
+( 0,  1) - North side
+( 0, -1) - South side
+
+The original instructions are given as how many blocks you should drive before you turn, and what direction to turn in. The instructions you want for next time should be given as coordinates for your map. When leaving the old house you are facing north.
+
+For example:
+R2 L3 - Means turn right and drive 2 blocks, then turn left and drive for 3 blocks, leaving you at (2, 3).
+
+o = old house, n = new house.
+---------------------
+|   |   |   |   | n |
+---------------------
+|   |   |   |   | | |
+---------------------
+|   |   |   |   | | |
+---------------------
+|   |   | o | ─ | ┘ |
+---------------------
+|   |   |   |   |   |
+---------------------
+|   |   |   |   |   |
+---------------------
+|   |   |   |   |   |
+---------------------
+
+The instructions your friend gave to get to their house is as follows:
+
+R2 L3 L4 L1 L1 R4 R8 L2 L2 R8 R7 L1 R2 L3 R11 R2 R4 R4 L7 R9 L1 R9 L2 R1
