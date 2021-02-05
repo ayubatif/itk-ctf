@@ -9,7 +9,6 @@ The decryption works by shifting characters in the alphabet, and the first chara
 For instance, the first encrypted hello would be solved like this by hand:
 
 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
-Q R S T U V W X Y Z A B C D E F G H I J K L M N O P 
 | | | | | | | | | | | | | | | | | | | | | | | | | |
 C D E F G H I J K L M N O P Q R S T U V W X Y Z A B
 
