@@ -16,10 +16,10 @@ def addRow(y, row):
         else:
             maze[x][y] = False
             print(" ", end="")
-        if char == "s":
+        if char == "S":
             start = (x, y)
             maze[x][y] = True
-        elif char == "e":
+        elif char == "E":
             end = (x, y)
         x += 1
     print()
@@ -38,49 +38,56 @@ for line in fileinput.input():
 ### Maze is built and we have start and end position
 path = [start]
 
+debug = False
 
 def walk():
     global path,maze
     pos = path[-1]
     if pos == end:
-        return
-    if not maze[pos[0] - 1][pos[1]]: # If not been left
+        return False
+    if not (pos[0] == 0 or maze[pos[0] - 1][pos[1]]): # If not been left
         maze[pos[0] - 1][pos[1]] = True
         path.append((pos[0] - 1, pos[1]))
+        if debug: print("left")
 
-    elif not maze[pos[0] + 1][pos[1]]: # If not been right
+    elif not (pos[0] == width-1 or maze[pos[0] + 1][pos[1]]): # If not been right
         maze[pos[0] + 1][pos[1]] = True
         path.append((pos[0] + 1, pos[1]))
+        if debug: print("right")
 
-    elif not maze[pos[0]][pos[1] - 1]: # If not been up
+    elif not (pos[1] == 0 or maze[pos[0]][pos[1] - 1]): # If not been up
         maze[pos[0]][pos[1] - 1] = True
         path.append((pos[0], pos[1] - 1))
+        if debug: print("up")
 
-    elif not maze[pos[0]][pos[1] + 1]: # If not been down
+    elif not (pos[1] == height-1 or maze[pos[0]][pos[1] + 1]): # If not been down
         maze[pos[0]][pos[1] + 1] = True
         path.append((pos[0], pos[1] + 1))
+        if debug: print("down")
 
     else: # Dead end
         path.pop()
+        if debug: print("pop")
 
     if len(path) == 0:
-        return
-    elif not pos == end:
-        walk()
+        return False
+    return True
 
 def toText(dir):
     text = ""
+    last = (0,1)
     for i in range(0, len(dir)-1):
         step = (dir[i][0] - dir[i + 1][0], dir[i][1] - dir[i + 1][1])
-        if step[0] == -1:
-            text += "R "
-        elif step[0] == 1:
+        turn = step[0]*last[1] - step[1]*last[0]
+        if turn == 0:
+            text += "F "
+        elif turn == 1:
             text += "L "
-        elif step[1] == 1:
-            text += "U "
-        elif step[1] == -1:
-            text += "D "
+        elif turn == -1:
+            text += "R "
+        last = step
     return text
 
-walk()
+while walk(): pass
+
 print(toText(path))
